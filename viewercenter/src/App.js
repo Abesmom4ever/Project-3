@@ -3,7 +3,8 @@ import React, { useRef } from "react";
 import Dashboard from "./components/Dashboard";
 import Title from "./components/Title";
 import useVideoPlayer from "./components/videoplayer";
-
+import VideoInfo from "./components/vidinfo";
+import video from "./temp video/Alex Jones will hunt down the enemies of Infowars.mp4"
 const App = () => {
   const videoElement = useRef(null);
   const {
@@ -13,6 +14,7 @@ const App = () => {
     handleVideoProgress,
     handleVideoSpeed,
     toggleMute,
+    VideoInfo,
   } = useVideoPlayer(videoElement);
   return (
     <div className="App">
@@ -22,7 +24,7 @@ const App = () => {
       <div className="container">
       <div className="video-wrapper">
         <video
-          // src={video}
+          src={video}
           ref={videoElement}
           onTimeUpdate={handleOnTimeUpdate}
         />

@@ -1,5 +1,7 @@
 
 import { useState, useEffect } from "react";
+import VideoInfo from "./vidinfo";
+import MultilineTextFieldsComment from "./Comment";
 
 const useVideoPlayer = (videoElement) => {
   const [playerState, setPlayerState] = useState({
@@ -68,6 +70,8 @@ const useVideoPlayer = (videoElement) => {
     handleVideoProgress,
     handleVideoSpeed,
     toggleMute,
+    VideoInfo,
+    MultilineTextFieldsComment,
   };
 };
 
