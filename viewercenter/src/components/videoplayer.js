@@ -41,14 +41,14 @@ const useVideoPlayer = (videoElement) => {
     });
   };
 
-  // const handleVideoSpeed = (event) => {
-  //   const speed = Number(event.target.value);
-  //   videoElement.current.playbackRate = speed;
-  //   setPlayerState({
-  //     ...playerState,
-  //     speed,
-  //   });
-  // };
+  const handleVideoSpeed = (event) => {
+    const speed = Number(event.target.value);
+    videoElement.current.playbackRate = speed;
+    setPlayerState({
+      ...playerState,
+      speed,
+    });
+  };
 
   const toggleMute = (e) => {
     setPlayerState({
@@ -68,7 +68,7 @@ const useVideoPlayer = (videoElement) => {
     togglePlay,
     handleOnTimeUpdate,
     handleVideoProgress,
-    // handleVideoSpeed,
+    handleVideoSpeed,
     toggleMute,
     VideoInfo,
     MultilineTextFieldsComment,
