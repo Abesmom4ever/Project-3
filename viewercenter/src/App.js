@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 // import mainListItems from "./components/listitems";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import Title from "./components/Title";
 import useVideoPlayer from "./components/videoplayer";
 import VideoInfo from "./components/vidinfo";

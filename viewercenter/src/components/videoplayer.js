@@ -41,16 +41,16 @@ const useVideoPlayer = (videoElement) => {
     });
   };
 
-  const handleVideoSpeed = (event) => {
-    const speed = Number(event.target.value);
-    videoElement.current.playbackRate = speed;
-    setPlayerState({
-      ...playerState,
-      speed,
-    });
-  };
+  // const handleVideoSpeed = (event) => {
+  //   const speed = Number(event.target.value);
+  //   videoElement.current.playbackRate = speed;
+  //   setPlayerState({
+  //     ...playerState,
+  //     speed,
+  //   });
+  // };
 
-  const toggleMute = () => {
+  const toggleMute = (e) => {
     setPlayerState({
       ...playerState,
       isMuted: !playerState.isMuted,
@@ -68,7 +68,7 @@ const useVideoPlayer = (videoElement) => {
     togglePlay,
     handleOnTimeUpdate,
     handleVideoProgress,
-    handleVideoSpeed,
+    // handleVideoSpeed,
     toggleMute,
     VideoInfo,
     MultilineTextFieldsComment,

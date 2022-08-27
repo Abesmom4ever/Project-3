@@ -19,7 +19,7 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Home" />
+      <ListItemText primary="Home" onClick={() => window.location.reload(false)}/>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
