@@ -4,4 +4,7 @@ import VideoThumbnail from 'react-video-thumbnail';
     thumbnailHandler={(thumbnail) => console.log(thumbnail)}
     width={120}
     height={80}
+    renderThumbnail={true}
     />
+
+    export default VideoThumbnail;
