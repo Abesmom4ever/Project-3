@@ -8,6 +8,7 @@ import VideoInfo from "./components/vidinfo";
 import video from "./temp video/Alex Jones will hunt down the enemies of Infowars.mp4"
 import SignIn from "./pages/Signin";
 import Signup from "./pages/Signup";
+
 const App = () => {
   return (
     <div className="App">
