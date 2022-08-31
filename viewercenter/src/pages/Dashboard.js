@@ -147,7 +147,7 @@ function DashboardContent() {
           <List component="nav">
             {mainListItems}
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            {/* {secondaryListItems} */}
           </List>
         </Drawer>
         <Box
@@ -163,11 +163,12 @@ function DashboardContent() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
+          <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
+            <Grid container spacing={1}>
               
               {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
+              <Grid item xs={1} md={3} lg={3}>
+                <RecipeReviewCard/>
                 <RecipeReviewCard/>
                
                 {/* <Paper */}
@@ -182,7 +183,7 @@ function DashboardContent() {
               </Grid>
               {/* Recent Deposits */}
               <Grid item xs={12} md={4} lg={3}>
-                <RecipeReviewCard/>
+                <RecipeReviewCard/><RecipeReviewCard/>
                 {/* <Paper
                   sx={{
                     p: 2,
@@ -192,7 +193,15 @@ function DashboardContent() {
                   }}
                 >
                 </Paper> */}
-              </Grid> <VideoPlayerComponent />
+              </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <RecipeReviewCard/>
+                <RecipeReviewCard/>
+                </Grid>
+                <Grid item xs={12} md={4} lg={3}>
+                <RecipeReviewCard/>
+                </Grid>
+                 <VideoPlayerComponent />
               {/* Recent Orders */}
               {/* <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
