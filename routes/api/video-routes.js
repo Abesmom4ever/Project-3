@@ -2,8 +2,10 @@ const router = require("express").Router();
 const { Video, Comment } = require("../../models");
 const { ObjectId } = require("mongoose");
 
+const { authMiddleware } = require('../../utils/auth');
+
 //TODO: ROUTE TO GET ALL VIDEOS
-router.get("/", async (req, res) => {
+router.post("/listall", async (req, res) => {
   try {
     let videos = await Video.find({});
     //.populate('comments')
@@ -15,18 +17,39 @@ router.get("/", async (req, res) => {
   }
 });
 
-//TODO: ROUTE TO CREATE A NEW VIDEO
-router.post("/", async (req, res) => {
+//ADD A NEW VIDEO
+router.post("/post", async (req, res) => {
   try {
-    let newVideo = await Video.create(req.body);
-    console.log(newVideo);
-    res.status(200).json(newVideo);
+
+    let validToken = await authMiddleware({ req: req });
+    //console.log(validToken);
+    if (validToken === true) {
+      let videoTitle = req.body.video_title;
+      let videoFilename = req.body.video_file;
+      let username = req.session.username;
+      let createdAt = Date.now();
+      let videoData = {
+        videoTitle,
+        username,
+        createdAt,
+        videoFilename
+      }
+      let newVideo = await Video.create(videoData);
+      console.log(newVideo);
+      res.status(200).json({success:1});
+    }
+    else
+    {
+      console.log("not logged in");  
+      res.status(200).json({message:'not logged in'});    
+    }
+    
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
+/*
 //TODO: ROUTE TO GET SINGLE VIDEO BASED ON VIDEO ID
 router.get("/:videoId", async (req, res) => {
   try {
@@ -83,7 +106,7 @@ router.post("/:videoId/comments", async (req, res) => {
         $push: { comments: newComment._id },
       }
     );
-    
+
     console.log(updatedVideo);
     res.status(200).json("yay");
   } catch (err) {
@@ -111,5 +134,5 @@ router.delete("/:videoId/comments/:commentId", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+*/
 module.exports = router;

@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+const { authMiddleware, signToken } = require('../../utils/auth');
+//const signToken = require('../../utils/auth');
+
+/*
 //TODO - ROUTE THAT GETS ALL THE USERS, include friends?
 router.get("/", async (req, res) => {
   try {
@@ -13,9 +17,10 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+*/
 
-//TODO - ROUTE THAT CREATES A NEW USER
-router.post("/", async (req, res) => {
+//SIGN UP WITH USERNAME AND PASSWORD
+router.post("/signup", async (req, res) => {
   try {
     let newUser = await User.create(req.body);
     console.log(newUser);
@@ -26,6 +31,68 @@ router.post("/", async (req, res) => {
   }
 });
 
+//LOGIN USING USERNAME AND PASSWORD
+router.post('/signin', async (req, res) => {
+  try {    
+    const userData = await User.findOne({  username: req.body.username, password: req.body.password  });    
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect username or password, please try again' });
+      return;
+    }
+
+    /*
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect username or password, please try again' });
+      return;
+    }
+    */
+
+    req.session.save(() => {
+      req.session.user_id = userData._id;
+      req.session.username = userData.username;
+      req.session.logged_in = true;
+      let token = signToken({ email: userData.email, username: userData.username, _id: userData._id });
+      res.json({ token: token, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
+
+router.post("/isloggedin", async (req, res) => {
+
+    let validToken = await authMiddleware({ req: req });
+    //console.log(validToken);
+    if (validToken === true) {
+      res.status(200).json({success:1}); 
+    }
+    else
+    {
+      res.status(200).json({login:false}); 
+    }
+});
+
+//LOGOUT
+router.post('/logout',async (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(async () => {
+      res.status(200).json({success:true}); 
+      //res.redirect('/logout');
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+/*
 //TODO - ROUTE THAT GETS A SINGLE USER BASED ON USER ID
 router.get("/:userId", async (req, res) => {
   try {
@@ -68,7 +135,7 @@ router.delete("/:userId", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+*/
 //TODO - ROUTE THAT ADDS A FRIEND TO A USER
 // router.put("/:userId/friends/:friendId", async (req, res) => {
 //   try {

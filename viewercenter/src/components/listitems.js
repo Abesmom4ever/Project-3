@@ -19,57 +19,40 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Home" onClick={() => window.location.reload(false)}/>
+      <ListItemText primary="Home" onClick={() => window.location.href="/"}/>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <VideoLibraryIcon />
+      <AssignmentIcon />        
       </ListItemIcon>
-      <ListItemText primary="Videos" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AccountBoxIcon />
-      </ListItemIcon>
-      <ListItemText primary="Profile" />
-    </ListItemButton>
-    {/* <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton> */}
-    <ListItemButton>
-      <ListItemIcon>
-        <SearchIcon/>
-      </ListItemIcon>
-      <ListItemText primary="Search" />
-    </ListItemButton>
+      <ListItemText primary="Post Video"onClick={() => window.location.href="PostVideo"}/>
+    </ListItemButton>    
   </React.Fragment>
 );
 
 export const secondaryListItems = (
   <React.Fragment>
     <ListSubheader component="div" inset>
-      Saved reports
+      User
     </ListSubheader>
     <ListItemButton>
       <ListItemIcon>
-        <AssignmentIcon />
+      <AccountBoxIcon />
       </ListItemIcon>
-      <ListItemText primary="Current month" />
+      <ListItemText primary="Sign up" onClick={() => window.location.href="SignUp"}/>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <AssignmentIcon />
+        <AccountBoxIcon />
       </ListItemIcon>
-      <ListItemText primary="Last quarter" />
+      <ListItemText primary="Sign in" onClick={() => window.location.href="SignIn"}/>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <AssignmentIcon />
+        <AccountBoxIcon />
       </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
+      <ListItemText primary="Logout" onClick={() => window.location.href="Logout"}/>
     </ListItemButton>
   </React.Fragment>
 );
+
