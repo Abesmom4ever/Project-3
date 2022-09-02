@@ -14,7 +14,8 @@ import { red } from '@mui/material/colors';
 // import ShareIcon from '@mui/icons-material/Share';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import VideoThumbnail from 'react-video-thumbnail';
+import VideoImageThumbnail from 'react-video-thumbnail-image';
+
 // const ExpandMore = styled((props) => {
 //     const { expand, ...other } = props;
 //     return <IconButton {...other} />;
@@ -49,19 +50,14 @@ import VideoThumbnail from 'react-video-thumbnail';
           title="Shrimp and Chorizo Paella"
           subheader="September 14, 2016"
         />
-        {/* <CardMedia
-          component="img"
-          height="100"
-          image="/static/images/cards/paella.jpg"
-          alt="Paella dish"
-        /> */}
-        <VideoThumbnail
-    videoUrl="../temp video/Alex Jones will hunt down the enemies of Infowars.mp4"
-    thumbnailHandler={(thumbnail) => console.log(thumbnail)}
-    width={120}
-    height={80}
-    renderThumbnail={true}
-    />
+        <CardMedia
+          // component="img"
+          // height="100"
+          // src="../temp video/Alex Jones will hunt down the enemies of Infowars.mp4"
+          // alt="Paella dish"
+          component={VideoImageThumbnail}
+
+        />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             This impressive paella is a perfect party dish and a fun meal to cook

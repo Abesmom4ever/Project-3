@@ -8,6 +8,7 @@ import VideoInfo from "./components/vidinfo";
 import video from "./temp video/Alex Jones will hunt down the enemies of Infowars.mp4"
 import SignIn from "./pages/Signin";
 import Signup from "./pages/Signup";
+import VideoPage from "./pages/VideoPage";
 
 const App = () => {
   return (
@@ -24,6 +25,9 @@ const App = () => {
         <Route
         path="/SignUp"
         element={<Signup/>}/>
+        <Route
+        path="/VideoPage"
+        element={<VideoPage/>}/>
       </Routes>
       {/* <mainListItems/> */}
     </Router>

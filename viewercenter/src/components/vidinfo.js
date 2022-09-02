@@ -35,13 +35,13 @@ const VideoInfo = ({title, description, publishedDate, channelTitle, channelImag
                     />
                     <div className='videoinfo__channelinfo'>
                         <h3 className='videoinfo__channeltitle'>{channelTitle}</h3>
-                        <p className='videoinfo__channelsubs'>{subs} subscribers</p>
+                        {/* <p className='videoinfo__channelsubs'>{subs} subscribers</p> */}
                     </div>
                     
                 </div>
-                <div className='videoinfo__subscribe'>
+                {/* <div className='videoinfo__subscribe'>
                     <Button color='secondary' >SUBSCRIBE</Button>
-                </div>
+                </div> */}
             </div>
             <div className='videoinfo__channeldesc'>
                 <p>{description}</p>

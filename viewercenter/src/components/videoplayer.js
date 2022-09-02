@@ -9,6 +9,7 @@ const useVideoPlayer = (videoElement) => {
     progress: 0,
     speed: 1,
     isMuted: false,
+    volume: 100,
   });
 
   const togglePlay = () => {
@@ -57,6 +58,15 @@ const useVideoPlayer = (videoElement) => {
     });
   };
 
+  const handleVolumeChange = (e) => {
+    videoElement.current.volume = e.target.value;
+
+    setPlayerState({
+      ...playerState,
+      volume: e.target.value,
+    });
+  }
+
   useEffect(() => {
     playerState.isMuted
       ? (videoElement.current.muted = true)
@@ -70,6 +80,7 @@ const useVideoPlayer = (videoElement) => {
     handleVideoProgress,
     handleVideoSpeed,
     toggleMute,
+    handleVolumeChange,
     VideoInfo,
     MultilineTextFieldsComment,
   };

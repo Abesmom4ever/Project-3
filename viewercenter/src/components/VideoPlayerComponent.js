@@ -11,6 +11,7 @@ export function VideoPlayerComponent () {
       handleVideoProgress,
       handleVideoSpeed,
       toggleMute,
+      handleVolumeChange,
       VideoInfo,
     } = useVideoPlayer(videoElement);
     return (
@@ -55,6 +56,13 @@ export function VideoPlayerComponent () {
               <i className="bx bxs-volume-mute"></i>
             )}
           </button>
+          <input
+          type="range"
+          min="0"
+          max="100"
+          value={playerState.volume}
+          onChange={(e) => handleVolumeChange(e)}
+        />
         </div>
       </div>
     </div>
