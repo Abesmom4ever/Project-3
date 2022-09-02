@@ -1,0 +1,32 @@
+.DS_Store
+node_modules/
+.env
+.git
+.vscode/
+*.zip
+
+
+#frontend
+# dependencies
+viewercenter/node_modules
+viewercenter/.pnp
+viewercenter/.pnp.js
+viewercenter/*.zip
+
+
+# testing
+viewercenter/coverage
+
+# production
+viewercenter/build
+
+# misc
+viewercenter/.DS_Store
+viewercenter/.env.local
+viewercenter/.env.development.local
+viewercenter/.env.test.local
+viewercenter/.env.production.local
+
+viewercenter/npm-debug.log*
+viewercenter/yarn-debug.log*
+viewercenter/yarn-error.log*

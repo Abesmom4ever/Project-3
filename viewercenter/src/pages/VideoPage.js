@@ -195,6 +195,6 @@ function Copyright(props) {
     );
   }
   
-  export default function Dashboard() {
+  export default function DashboardVid() {
     return <DashboardVidContent />;
   }
