@@ -29,7 +29,6 @@ export function VideoPlayerComponent () {
       handleVideoProgress,
       handleVideoSpeed,
       toggleMute,
-      handleVolumeChange,
       VideoInfo,
     } = useVideoPlayer(videoElement);
       function SliderSizes() {
