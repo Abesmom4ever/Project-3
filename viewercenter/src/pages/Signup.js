@@ -12,13 +12,14 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ajaxPost } from '../utils/helpers';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        JS Tube
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -28,14 +29,36 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+function signUpPost(signup_email, signup_username, signup_password) {
+  const postUrl = '/api/users/signup';
+
+  const postBody = {
+    email: signup_email,
+    username: signup_username,
+    password: signup_password
+  };
+
+  if (signup_email && signup_username && signup_password)
+    ajaxPost(postUrl, postBody, function (result) {
+      console.log(result);
+
+      window.location.href = "/SignIn";
+
+    });
+
+
+}
+
 export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
+      username: data.get('username'),
       password: data.get('password'),
     });
+    signUpPost(data.get('email'), data.get('username'), data.get('password'));
   };
 
   return (
@@ -58,25 +81,15 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -100,12 +113,9 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+
+              
+              
             </Grid>
             <Button
               type="submit"
@@ -117,7 +127,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/SignIn" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
