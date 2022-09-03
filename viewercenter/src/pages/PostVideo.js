@@ -43,8 +43,8 @@ async function postVideoSend(video_title, video_file_name, video_file) {
                     const s3Service = new S3({
                         region: "us-west-1",
                         credentials: {
-                            secretAccessKey: "h3XFcpQL3rpgi5RWqnnfOIEEPI/5VjSe0x8B8WfN",
-                            accessKeyId: "AKIAZPODJCUXJ2ER5KXT"
+                            secretAccessKey: process.env.AMAZONKEY,
+                            accessKeyId: process.env.AMAZONKEYID
                         },
                     });
 
